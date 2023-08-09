@@ -24,8 +24,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s Your favorite colour?',
-      'What\'s your favorite animal?',
+      {
+        'questionText': 'What\'s Your favorite colour?',
+        'answers': ['Black', 'Red', 'Green', 'White']
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': ['Dog', 'Cat', 'Rabbit', 'Goat']
+      },
     ];
     return MaterialApp(
         home: Scaffold(
@@ -34,45 +40,12 @@ class _MyAppState extends State<MyApp> {
             ),
             body: Column(
               children: <Widget>[
-                Question(questions[_questionIndex]),
-                SizedBox(
-                  height: 20,
+                Question(
+                  questions[_questionIndex]['questionText'] as String,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 150,
-                      child: Answer(
-                        name: 'A',
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    SizedBox(
-                      width: 150,
-                      child: Answer(
-                        name: 'B',
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                     Answer(
-                  name: "c",
-                ),
-                 SizedBox(
-                      width: 20,
-                    ),
-                Answer(
-                  name: "D",)
-                  ],
-                )
+                ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
+                  return Answer(name: answer, selectHandler: answerQuestion,);
+                }).toList(),
               ],
             )));
   }

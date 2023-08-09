@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,12 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+        //  disabledBackgroundColor: Colors.blue, 
+         backgroundColor: Colors.blue,
+        ),
           onPressed: selectHandler,
           child: Text(name)),
     );
