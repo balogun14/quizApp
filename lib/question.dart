@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class Question extends StatelessWidget {
-  Question(this.questionText);
+  Question(this.questionText, {super.key});
 
   String questionText;
 

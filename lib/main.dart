@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, avoid_print,use_const, prefer_const_constructors
+// ignore_for_file: avoid_print,use_const, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:calculator/question.dart';
@@ -7,6 +7,8 @@ import 'answer.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
