@@ -18,18 +18,71 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'What\'s Your favorite colour?',
-      'answers': ['Black', 'Red', 'Green', 'White']
+      'answers': [
+        {
+          'text': 'Black',
+          'score': 10,
+        },
+        {
+          'text': 'Red',
+          'score': 8,
+        },
+        {
+          'text': 'Green',
+          'score': 6,
+        },
+        {
+          'text': 'White',
+          'score': 5,
+        },
+      ]
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Dog', 'Cat', 'Rabbit', 'Goat']
+      'answers': [
+        {
+          'text': 'Cat',
+          'score': 10,
+        },
+        {
+          'text': 'Dog',
+          'score': 8,
+        },
+        {
+          'text': 'Rabbit',
+          'score': 6,
+        },
+        {
+          'text': 'Goat',
+          'score': 5,
+        },
+      ]
     },
     {
       'questionText': 'What\'s your favorite Movie?',
-      'answers': ['Barbie', 'Oppenheimer', 'The Originals', 'Mario']
+      'answers': [
+        {
+          'text': 'Oppenhehimer',
+          'score': 10,
+        },
+        {
+          'text': 'Barbie',
+          'score': 8,
+        },
+        {
+          'text': 'The Originals',
+          'score': 6,
+        },
+        {
+          'text': 'Mario',
+          'score': 5,
+        },
+      ]
     },
   ];
-  void _answerQuestion() {
+  var _totalScore = 0;
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex += 1;
     });
@@ -39,6 +92,13 @@ class _MyAppState extends State<MyApp> {
     } else {
       print('No more questions');
     }
+  }
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
   }
 
   @override
@@ -54,7 +114,10 @@ class _MyAppState extends State<MyApp> {
                 questionindex: _questionIndex,
                 questions: _questions,
               )
-            : Result(),
+            : Result(
+                totalScore: _totalScore,
+                reset: _resetQuiz,
+              ),
       ),
     );
   }
